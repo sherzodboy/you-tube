@@ -1,11 +1,24 @@
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { useState } from "react";
+import { Stack, Box, Container, Typography } from "@mui/material";
+import { colors } from "./../../constants/colors";
+import Category from "./../category/category";
 
 const Main = () => {
+  const [selectedCategory, setSelectedCategory] = useState("New");
+
   return (
-    <Link to={"/channel"}>
-      <Button>Channel</Button>
-    </Link>
+    <Stack>
+      <Category />
+      <Box p={2} sx={{ height: "90vh" }}>
+        <Container maxWidth={"90%"}>
+          <Typography variant={"h4"} fontWeight={"bold"} mb={2}>
+            {selectedCategory}{" "}
+            <span style={{ color: colors.secondary }}>videos</span>
+          </Typography>
+          Videos
+        </Container>
+      </Box>
+    </Stack>
   );
 };
 

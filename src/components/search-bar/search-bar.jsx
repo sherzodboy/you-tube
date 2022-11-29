@@ -7,7 +7,7 @@ const SearchBar = () => {
     <Paper
       component={"form"}
       sx={{
-        border: `1px solid ${colors.secondary}`,
+        border: `1px solid ${colors.thirth}`,
         pl: 2,
         boxShadow: "none",
       }}
