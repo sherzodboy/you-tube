@@ -36,7 +36,7 @@
   transition: all 0.3s ease;
 }
 .category-btn:hover {
-  background-color: rgb(163, 22, 22) !important;
+  background-color: red !important;
   color: #fff !important;
 }
 .category-btn:hover span{
