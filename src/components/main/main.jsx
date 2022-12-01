@@ -23,8 +23,7 @@ const Main = () => {
       }
     };
     getData();
-    // eslint-disable-next-line
-  }, []);
+  }, [selectedCategory]);
 
   return (
     <Stack>
