@@ -7,7 +7,7 @@ const Videos = ({ videos }) => {
       width={"100%"}
       direction={"row"}
       flexWrap={"wrap"}
-      justifyContent={"start"}
+      justifyContent={"space-between"}
       alignItems={"center"}
       gap={2}
     >

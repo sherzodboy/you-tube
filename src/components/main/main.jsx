@@ -23,6 +23,7 @@ const Main = () => {
       }
     };
     getData();
+    // eslint-disable-next-line
   }, []);
 
   return (
