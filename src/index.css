@@ -3,6 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+  color: #000;
+}
 ::-webkit-scrollbar {
   width: 0;
   height: 4px;
@@ -42,8 +46,15 @@
 .category-btn:hover span{
   color: #fff !important;
 }
+.react-payer {
+  height: 77vh !important;
+  width: 100% !important;
+}
 @media screen and (max-width: 600px) {
   .search-bar {
     width: 200px
+  }
+  .react-payer {
+    height: 45vh !important;
   }
 }
