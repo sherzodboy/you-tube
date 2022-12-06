@@ -6,16 +6,16 @@ import ReactPlayer from "react-player";
 import {
   CheckCircle,
   FavoriteOutlined,
-  LocalActivity,
   MarkChatRead,
   Tag,
   Visibility,
 } from "@mui/icons-material";
-// import renderHTML from "react-render-html";
 import Loader from "./../loader/loader";
+import Videos from "./../videos/videos";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
+  const [relatedVideo, setRelatedVideo] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
@@ -25,6 +25,10 @@ const VideoDetail = () => {
           `videos?part=snippet,statistics&id=${id}`
         );
         setVideoDetail(data.items[0]);
+        const reatedData = await ApiService.fetching(
+          `search?part=snippet&relatedVideoId=${id}&type=video`
+        );
+        setRelatedVideo(reatedData.items);
       } catch (error) {
         console.log(error);
       }
@@ -33,11 +37,6 @@ const VideoDetail = () => {
   }, [id]);
 
   if (!videoDetail?.snippet) return <Loader />;
-
-  // const {
-  //   snippet: { title, channelId, channelTitle, description, tags, thumbnails },
-  //   statistics: { viewCount, likeCount, commentsCount },
-  // } = videoDetail;
 
   return (
     <Box minHeight={"90vh"} mb={10}>
@@ -118,7 +117,17 @@ const VideoDetail = () => {
             </Stack>
           </Stack>
         </Box>
-        <Box width={{ xs: "100%", md: "25%" }}>suggested video</Box>
+        <Box
+          width={{ xs: "100%", md: "25%" }}
+          px={2}
+          py={{ md: 1, xs: 5 }}
+          justifyContent="center"
+          alignItems="center"
+          overflow="scroll"
+          maxHeight="100vh"
+        >
+          <Videos videos={relatedVideo} />
+        </Box>
       </Box>
     </Box>
   );
