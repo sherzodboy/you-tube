@@ -1,9 +1,15 @@
-import { Box, Chip, Typography } from "@mui/material";
+import { Box, Chip, Typography, Stack } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ApiService } from "./../../service/api.service";
 import ReactPlayer from "react-player";
-import { Tag } from "@mui/icons-material";
+import {
+  FavoriteOutlined,
+  MarkChatRead,
+  Tag,
+  Visibility,
+} from "@mui/icons-material";
+// import renderHTML from "react-render-html";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -53,8 +59,39 @@ const VideoDetail = () => {
             {videoDetail.snippet.title}
           </Typography>
           <Typography variant="subtitle2" p={2} sx={{ opacity: "0.7" }}>
-            {videoDetail.snippet.description}
+            {/* {renderHTML(videoDetail.snippet.description)} */}
           </Typography>
+          <Stack
+            direction={"row"}
+            gap={"20px"}
+            alignItems="center"
+            py={1}
+            px={2}
+          >
+            <Visibility />
+            {parseInt(videoDetail.statistics.viewCount).toLocaleString()} views
+          </Stack>
+          <Stack
+            sx={{ opacity: 0.7 }}
+            direction={"row"}
+            alignItems={"center"}
+            gap={"3px"}
+          >
+            <FavoriteOutlined />
+            {parseInt(videoDetail.statistics.likeCount).toLocaleString()} likes
+          </Stack>
+          <Stack
+            sx={{ opacity: 0.7 }}
+            direction={"row"}
+            alignItems={"center"}
+            gap={"3px"}
+          >
+            <MarkChatRead />
+            {parseInt(
+              videoDetail.statistics.commentsCount
+            ).toLocaleString()}{" "}
+            comments
+          </Stack>
         </Box>
         <Box width={"25%"}>suggested video</Box>
       </Box>
